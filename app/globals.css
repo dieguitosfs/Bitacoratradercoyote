@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --background: #050816;
+  --foreground: #e6edf7;
+  --panel: #0b1220;
+  --muted: #94a3b8;
+  --profit: #22c55e;
+  --loss: #ef4444;
+  --warning: #eab308;
+  --accent: #22d3ee;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #0b1730 0, var(--background) 38%);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components { .field { @apply mt-1 w-full rounded-xl border border-slate-700 bg-slate-900 p-3 text-slate-100 outline-none focus:border-cyan-400; } label { @apply text-sm text-slate-300; } }

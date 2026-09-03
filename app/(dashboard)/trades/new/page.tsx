@@ -1,0 +1,2 @@
+import { NewTradeForm } from '@/components/trades/new-trade-form';import { getTradeFormOptions } from '@/lib/server/trade-options';
+export default async function Page(){const o=await getTradeFormOptions();return <main className="mx-auto max-w-7xl p-6 md:p-10"><p className="text-xs font-semibold uppercase tracking-[.18em] text-cyan-300">Bitácora</p><h1 className="mt-2 text-3xl font-semibold">Nueva operación</h1><p className="mb-6 mt-2 text-sm text-slate-400">Configura riesgo, ejecución y contexto antes de registrar.</p><NewTradeForm {...o}/></main>}

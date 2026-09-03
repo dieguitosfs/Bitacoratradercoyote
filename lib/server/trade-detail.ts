@@ -1,0 +1,2 @@
+import 'server-only';import{requireUser}from'@/lib/supabase/auth';
+export async function getTradeDetail(id:string){const{supabase}=await requireUser();const{data,error}=await supabase.from('trades').select('*,instrument:instruments(display_name),account:trading_accounts(name,currency),strategy:strategies(name),reviews:ai_trade_reviews(review_type,response,created_at)').eq('id',id).single();if(error||!data)throw new Error('TRADE_NOT_FOUND');return data}

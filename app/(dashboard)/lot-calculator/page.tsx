@@ -1,0 +1,3 @@
+import { LotCalculator } from '@/components/lot/lot-calculator';
+import { listEffectiveInstruments } from '@/lib/server/instruments';
+export default async function LotCalculatorPage(){ const instruments=await listEffectiveInstruments(); return <main className="mx-auto max-w-7xl p-6 md:p-10"><p className="text-xs font-semibold uppercase tracking-[.18em] text-cyan-300">Riesgo y ejecución</p><h1 className="mt-2 text-3xl font-semibold">Calculadora de lotaje</h1><p className="mt-2 mb-6 text-sm text-slate-400">El lote se redondea siempre hacia abajo al lot_step. El lotaje base es solo una referencia.</p><LotCalculator instruments={instruments}/></main> }
