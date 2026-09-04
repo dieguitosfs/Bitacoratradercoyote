@@ -39,7 +39,7 @@ export function RiskCalculator() {
 
       <section className="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-5 md:p-6">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">Riesgo permitido por plan</p>
-        {'data' in result ? (
+        {'data' in result && result.data ? (
           <div className="mt-5 grid gap-4 sm:grid-cols-3">
             <Metric label="Balance" value={`$${result.data.balance}`} />
             <Metric label="Riesgo" value={`${result.data.percentage}%`} />
