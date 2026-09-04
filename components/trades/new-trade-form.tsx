@@ -19,7 +19,7 @@ export function NewTradeForm({accounts,instruments,strategies}:{accounts:Account
   <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
    <label>Modo<select value={mode} onChange={e=>setMode(e.target.value as any)} className="field"><option value="STUDY">OPERACIÓN DE ESTUDIO</option><option value="REAL">REAL</option></select></label>
    <label>Cuenta<select value={accountId} onChange={e=>setAccountId(e.target.value)} className="field">{accounts.map(a=><option value={a.id} key={a.id}>{a.name}</option>)}</select></label>
-   <label>Activo<select value={instrumentId} onChange={e=>setInstrumentId(e.target.value)} className="field">{instruments.map(i=><option value={i.id} key={i.id}>{i.displayName}</option>)}</select></label>
+   <label>Activo<select value={instrumentId} onChange={e=>setInstrumentId(e.target.value)} className="field" disabled={instruments.length===0}>{instruments.length===0?<option value="">No hay activos disponibles</option>:instruments.map(i=><option value={i.id} key={i.id}>{i.displayName}</option>)}</select></label>
    <label>Dirección<select value={direction} onChange={e=>setDirection(e.target.value as any)} className="field"><option>BUY</option><option>SELL</option></select></label>
    <label>Origen<select name="origin" className="field"><option value="OWN">PROPIA</option><option value="SIGNAL">SEÑAL</option></select></label>
    <label>Temporalidad<select name="timeframe" className="field">{['M1','M5','M15','M30','H1','H4','D1'].map(x=><option key={x}>{x}</option>)}</select></label>

@@ -42,7 +42,7 @@ Nunca exponer `SUPABASE_SERVICE_ROLE_KEY` ni `GROQ_API_KEY` al navegador.
 
 1. Crear proyecto.
 2. Ejecutar `supabase/migrations/202609020001_initial_schema.sql`.
-3. Ejecutar `supabase/seed/001_instruments.sql` si se desea cargar el catálogo inicial.
+3. Ejecutar las migraciones hasta `202609020008_seed_instruments.sql`; la última carga el catálogo inicial de activos de forma idempotente.
 4. En una fase posterior se agregan las policies del bucket privado `trade-images` y el flujo de upload.
 
 ## Reglas financieras
