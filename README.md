@@ -32,10 +32,11 @@ npm run dev
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
-XAI_API_KEY=
+GROQ_API_KEY=
+GROQ_MODEL=meta-llama/llama-4-scout-17b-16e-instruct
 ```
 
-Nunca exponer `SUPABASE_SERVICE_ROLE_KEY` ni `XAI_API_KEY` al navegador.
+Nunca exponer `SUPABASE_SERVICE_ROLE_KEY` ni `GROQ_API_KEY` al navegador.
 
 ## Supabase
 
@@ -60,9 +61,9 @@ npm run build
 
 Importar el repositorio en Vercel y definir las cuatro variables de entorno. La arquitectura usa Server Components/Route Handlers y es compatible con ejecución serverless.
 
-## xAI
+## Groq
 
-El endpoint base existe en `/api/ai/analyze-trade`, pero permanece deliberadamente sin llamada a xAI hasta la Fase 14, cuando se añadan Zod, rate limiting, normalización de imagen y persistencia de respuesta estructurada.
+El endpoint `/api/ai/analyze-trade` usa Groq para revisión educativa de operaciones, con soporte visual para JPG/PNG, validación Zod, rate limiting y persistencia de la respuesta estructurada.
 
 ## Seguridad
 

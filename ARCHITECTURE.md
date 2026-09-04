@@ -2,7 +2,7 @@
 
 ## A. Arquitectura
 
-Arquitectura modular monolítica sobre Next.js App Router, desplegable en Vercel. La UI usa Server Components por defecto y Client Components únicamente para formularios, gráficos e interacción. Supabase ofrece Auth, PostgreSQL, Storage y RLS. Las acciones sensibles (registro de operaciones reales, cálculo contractual, validación del plan, uploads firmados y xAI) pasan por servidor.
+Arquitectura modular monolítica sobre Next.js App Router, desplegable en Vercel. La UI usa Server Components por defecto y Client Components únicamente para formularios, gráficos e interacción. Supabase ofrece Auth, PostgreSQL, Storage y RLS. Las acciones sensibles (registro de operaciones reales, cálculo contractual, validación del plan, uploads firmados y Groq) pasan por servidor.
 
 Capas:
 1. `app/`: rutas, layouts, Server Components, Route Handlers.
@@ -111,11 +111,11 @@ Si faltan datos contractuales: `MISSING_CONTRACT_DATA` y no se inventa lote.
 - RLS por `auth.uid()` en todas las tablas de usuario.
 - `user_id` nunca se acepta como autoridad desde el cliente.
 - `SUPABASE_SERVICE_ROLE_KEY` solo en módulos `server-only`.
-- `XAI_API_KEY` solo Route Handler/backend.
+- `GROQ_API_KEY` solo Route Handler/backend.
 - Zod en frontera de entrada y revalidación de dominio en servidor.
 - Storage privado con paths `user_id/trades/year/month/<uuid>.<ext>`.
 - MIME allowlist: JPEG/PNG/WebP; tamaño máximo configurable.
-- Rate limiting para IA antes de habilitar xAI.
+- Rate limiting para las solicitudes a Groq.
 - Evitar logs con secretos, signed URLs o payloads sensibles.
 - Operaciones financieras con `numeric` en Postgres y `Decimal` en TypeScript.
 - Para operaciones reales, el backend debe volver a evaluar horario, límites diario/mensual y riesgo inmediatamente antes del insert.
@@ -135,6 +135,6 @@ Si faltan datos contractuales: `MISSING_CONTRACT_DATA` y no se inventa lote.
 11. Dashboard financiero.
 12. Estadísticas y filtros.
 13. Calendario/heatmap.
-14. xAI/Grok con JSON estructurado y rate limiting.
+14. Groq con JSON estructurado, análisis visual y rate limiting.
 15. PWA e instalación.
 16. Hardening, tests E2E, observabilidad y deploy Vercel.
